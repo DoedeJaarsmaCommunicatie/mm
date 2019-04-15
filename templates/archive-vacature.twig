@@ -6,12 +6,12 @@
     </header>
 
     <section class="container mx-auto">
-        <aside id="vacature_filter">
+        <aside id="vacature_filter md:w-1/3">
             {% include 'templates/parts/search-form.twig' %}
         </aside>
-        <main>
+        <main class="md:w-2/3">
             {% for post in posts %}
-                {{ post.title }}
+                {% include 'templates/tease/vacature.twig' with { post : post} only %}
             {% endfor %}
             <aside id="pagination" class="flex justify-between">
 
