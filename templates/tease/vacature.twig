@@ -1,7 +1,7 @@
 <article data-id="{{ post.ID }}" class="tease-vacature">
     {{ post.title }}
 
-    {{ post.content }}
+    {{ post.content|excerpt(25) }}
 
     {{ post.meta('locatie') }}
 </article>
