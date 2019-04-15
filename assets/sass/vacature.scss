@@ -59,3 +59,7 @@
   height: 75px;
   width: 75px;
 }
+
+.tease-vacature {
+  @apply border-b border-primary-500 pb-4 mb-4 flex;
+}
