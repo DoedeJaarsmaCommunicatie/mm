@@ -1,14 +1,22 @@
 <article data-id="{{ post.ID }}" class="tease-vacature">
     <main class="tease-vacature-main">
-        <strong>
+        <strong class="block mb-4">
             {{ post.title }}
         </strong>
         <p>
             {{ post.content|excerpt(25) }}
         </p>
-        <p>
-            {{ post.meta('locatie') }}
-        </p>
+        <aside class="flex justify-between">
+            <span class="home-tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
+            <span class="home-tease-vacature__usp-sep">
+                {% include "templates/parts/home/separator.twig" %}
+            </span>
+            <span class="home-tease-vacature__usp">{{ post.meta('soort_dienstverband') }}</span>
+            <span class="home-tease-vacature__usp-sep">
+                {% include "templates/parts/home/separator.twig" %}
+            </span>
+            <span class="home-tease-vacature__usp">{{ post.meta('salaris') }}</span>
+        </aside>
     </main>
     <aside class="tease-vacature-aside">
         <a href="{{ post.link }}" class="button">
