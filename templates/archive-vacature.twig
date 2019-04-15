@@ -14,6 +14,8 @@
                 {{ post.title }}
             {% endfor %}
             {{ __("%d van de %d vacatures", 'ppmm')|format(vacatures|length, fn('wp_count_posts', 'vacature').publish) }}
+
+            {% include 'templates/parts/archive/pagination.twig' %}
         </main>
     </section>
 {% endblock %}
