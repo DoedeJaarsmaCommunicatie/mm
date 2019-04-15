@@ -15,7 +15,10 @@
                 <div class="form-group">
                     <strong class="block">{{ __('Regio', 'ppmm') }}</strong>
                     <div class="form-group-controls">
-                        {{ dump(regions) }}
+                        {% for region in regions %}
+                            <input type="checkbox"name="regio_{{ region.term_id }}" name="regio_{{ region.term_id }}" />
+                            <label for="regio_{{ region.term_id }}">{{ region.name }}</label>
+                        {% endfor %}
                     </div>
                 </div>
 
