@@ -6,16 +6,19 @@
     </header>
 
     <section class="container mx-auto">
-        <aside id="vacature_filter">
-            {% include 'templates/parts/search-form.twig' %}
-        </aside>
         <main>
             {% for post in posts %}
                 {{ post.title }}
             {% endfor %}
-            {{ __("%d van de %d vacatures", 'ppmm')|format(vacatures|length, fn('wp_count_posts', 'vacature').publish) }}
 
-            {% include 'templates/parts/archive/pagination.twig' %}
+            <aside>
+
+                {{ __("%d van de %d vacatures", 'ppmm')|format(posts|length, fn('wp_count_posts', 'vacature').publish) }}
+            </aside>
+            <aside id="vacature_filter" class="flex content-between">
+                {% include 'templates/parts/search-form.twig' %}
+                {% include 'templates/parts/archive/pagination.twig' %}
+            </aside>
         </main>
     </section>
 {% endblock %}
