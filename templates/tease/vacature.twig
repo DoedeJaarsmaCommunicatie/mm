@@ -1,7 +1,11 @@
 <article data-id="{{ post.ID }}" class="tease-vacature">
-    {{ post.title }}
-
-    {{ post.content|excerpt(25) }}
-
-    {{ post.meta('locatie') }}
+    <strong>
+        {{ post.title }}
+    </strong>
+    <p>
+        {{ post.content|excerpt(25) }}
+    </p>
+    <p>
+        {{ post.meta('locatie') }}
+    </p>
 </article>
