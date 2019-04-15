@@ -1,8 +1,8 @@
 <nav class="pagination">
     {% if posts.pagination.next %}
-        <a href="{{posts.pagination.next.link}}" class="next {{posts.pagination.next.link|length ? '' : 'invisible'}}">Next</a>
+        <a href="{{posts.pagination.next.link}}" class="next text-secondary-500 {{posts.pagination.next.link|length ? '' : 'invisible'}}">{{ __('Volgende vacatures', 'ppmm')}}</a>
     {% endif %}
     {% if posts.pagination.prev %}
-        <a href="{{posts.pagination.prev.link}}" class="prev {{posts.pagination.prev.link|length ? '' : 'hidden'}}">{{ __('Vorige vacatures', 'ppmm')}}</a>
+        <a href="{{posts.pagination.prev.link}}" class="prev text-secondary-500 {{posts.pagination.prev.link|length ? '' : 'hidden'}}">{{ __('Vorige vacatures', 'ppmm')}}</a>
     {% endif %}
 </nav>

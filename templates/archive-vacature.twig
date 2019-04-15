@@ -15,7 +15,7 @@
             {% endfor %}
             <aside id="pagination" class="flex content-between">
 
-                {{ __("%d van de %d vacatures", 'ppmm')|format(posts|length, fn('wp_count_posts', 'vacature').publish) }}
+                <span class="text-secondary-500">{{ __("%d van de %d vacatures", 'ppmm')|format(posts|length, fn('wp_count_posts', 'vacature').publish) }}</span>
                 {% include 'templates/parts/archive/pagination.twig' %}
             </aside>
         </main>
