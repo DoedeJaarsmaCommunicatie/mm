@@ -1,1 +1,18 @@
 {% extends 'templates/layouts/base.twig' %}
+
+{% block content %}
+    <header class="container mx-auto">
+        <h1 class="text-2xl text-secondary-500">{{ __('Zoek in vastgoed vacatures', 'ppmm') }}</h1>
+    </header>
+
+    <section class="container mx-auto">
+        <aside id="vacature_filter">
+            {% include 'templates/parts/search-form.twig' %}
+        </aside>
+        <main>
+            {% for post in posts %}
+                {{ post.title }}
+            {% endfor %}
+        </main>
+    </section>
+{% endblock %}
