@@ -9,6 +9,7 @@ $posts = new \Timber\PostQuery();
 $context['posts'] = $posts;
 $context['regions'] = get_terms([
 	'taxonomy'      => 'regio',
+	'orderby'       => 'name',
 	'hide_empty'    => true,
 ]);
 

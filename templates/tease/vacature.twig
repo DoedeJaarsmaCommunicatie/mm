@@ -1,7 +1,9 @@
 <article data-id="{{ post.ID }}" class="tease-vacature">
     <main class="tease-vacature-main">
         <strong class="block mb-4">
-            {{ post.title }}
+            <a href="{{ post.link }}">
+                {{ post.title }}
+            </a>
         </strong>
         <p>
             {{ post.content|excerpt(25) }}
