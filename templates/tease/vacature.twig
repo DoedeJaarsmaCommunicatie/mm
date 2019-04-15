@@ -6,16 +6,16 @@
         <p>
             {{ post.content|excerpt(25) }}
         </p>
-        <aside class="flex justify-between">
-            <span class="home-tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
-            <span class="home-tease-vacature__usp-sep">
+        <aside class="flex">
+            <span class="tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
+            <span class="tease-vacature__usp-sep">
                 {% include "templates/parts/home/separator.twig" %}
             </span>
-            <span class="home-tease-vacature__usp">{{ post.meta('soort_dienstverband') }}</span>
-            <span class="home-tease-vacature__usp-sep">
+            <span class="tease-vacature__usp">{{ post.meta('soort_dienstverband') }}</span>
+            <span class="tease-vacature__usp-sep">
                 {% include "templates/parts/home/separator.twig" %}
             </span>
-            <span class="home-tease-vacature__usp">{{ post.meta('salaris') }}</span>
+            <span class="tease-vacature__usp">{{ post.meta('salaris') }}</span>
         </aside>
     </main>
     <aside class="tease-vacature-aside">
