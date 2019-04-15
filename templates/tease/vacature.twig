@@ -1,5 +1,5 @@
 <article data-id="{{ post.ID }}" class="tease-vacature">
-    <main>
+    <main class="tease-vacature-main">
         <strong>
             {{ post.title }}
         </strong>
@@ -10,7 +10,7 @@
             {{ post.meta('locatie') }}
         </p>
     </main>
-    <aside>
+    <aside class="tease-vacature-aside">
         <a href="{{ post.link }}" class="button">
             {{ __('Bekijk vacature', 'ppmm') }}
         </a>

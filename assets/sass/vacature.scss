@@ -62,4 +62,11 @@
 
 .tease-vacature {
   @apply border-b border-primary-500 pb-4 mb-4 flex;
+
+  & .tease-vacature-aside {
+    @apply items-end;
+    & > .button {
+      @apply whitespace-no-wrap block;
+    }
+  }
 }
