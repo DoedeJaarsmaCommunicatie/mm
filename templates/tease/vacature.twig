@@ -1,11 +1,18 @@
 <article data-id="{{ post.ID }}" class="tease-vacature">
-    <strong>
-        {{ post.title }}
-    </strong>
-    <p>
-        {{ post.content|excerpt(25) }}
-    </p>
-    <p>
-        {{ post.meta('locatie') }}
-    </p>
+    <main>
+        <strong>
+            {{ post.title }}
+        </strong>
+        <p>
+            {{ post.content|excerpt(25) }}
+        </p>
+        <p>
+            {{ post.meta('locatie') }}
+        </p>
+    </main>
+    <aside>
+        <a href="{{ post.link }}" class="button">
+            {{ __('Bekijk vacature'. 'ppmm') }}
+        </a>
+    </aside>
 </article>
