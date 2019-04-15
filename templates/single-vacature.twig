@@ -1,0 +1,111 @@
+{% extends 'templates/layouts/base.twig' %}
+
+{% block content %}
+    {% set _regios = post.terms('regio') %}
+    {% set _branches = post.terms('branche') %}
+    {% set _functies = post.terms('functie') %}
+    {% set _opdrachtgevers = post.terms('opdrachtgever') %}
+    <style>
+        .header-vacature {
+            height: 430px;
+        }
+    </style>
+    <header class="header-vacature bg-primary-500 py-12">
+        <div class="container mx-auto md:flex h-full">
+            <div class="md:w-1/3 md:flex flex-col md:h-full">
+                <h1 class="text-white text-5xl">
+                    {{ post.title }}
+                </h1>
+                <span data-scroll="sollicitatieFormulier" class="button md:mt-auto md:mr-auto">{{  __('Direct solliciteren', 'ppmm') }}</span>
+            </div>
+            <div class="md:w-1/2 ml-auto relative">
+                <picture class="absolute">
+                    {% if post.thumbnail %}
+                        {% set _img = post.thumbnail %}
+                    {% else %}
+                        {% set _img = Image(options.header_vacature) %}
+                    {% endif %}
+                    <source srcset="{{ _img.src('medium') }}" media="(max-width: 413px)" />
+                    <source srcset="{{ _img.src('medium_large') }}" media="(min-width: 414px) and (max-width: 768px)" />
+                    <img src="{{ _img.src('large') }}" alt="{{ _img.alt }}">
+                </picture>
+            </div>
+        </div>
+    </header>
+    <section class="container mx-auto py-8 md:flex">
+        <a href="#" class="text-secondary-500 no-underline">{{ __('&lt; terug naar overzicht', 'ppmm') }}</a>
+        <section class="md:w-5/6 ml-auto vacature-demands-container mr-6">
+            <div class="md:w-1/2">
+                <h3 class="text-2xl text-black">{{ __('Vereisten', 'ppmm') }}</h3>
+                <ul class="vacature-list">
+                    {% for demand in post.meta('informatie').demands %}
+                        <li>{{ demand.value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="md:w-1/2">
+                <h3 class="text-2xl text-black">{{ __('Ons aanbod', 'ppmm') }}</h3>
+                <ul class="vacature-list">
+                    {% for offer in post.meta('informatie').offers %}
+                        <li>{{ offer.value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </section>
+    <article class="container mx-auto flex py-8">
+        <main class="md:w-3/4">
+            <div class="md:flex mb-8">
+                <aside class="md:w-1/5">
+                    <h4 class="text-2xl">
+                        {{ __('Vacature', 'ppmm') }}
+                    </h4>
+                </aside>
+                <section class="md:w-2/3 vacature-content">
+                    {{ post.content }}
+                </section>
+            </div>
+            <div class="flex">
+                {% if _opdrachtgevers[0] %}
+                <aside class="md:w-1/5">
+                    <h4 class="text-2xl">
+                        {{ __('Werken bij <br> %s', 'ppmm')|format(_opdrachtgevers[0]) }}
+                    </h4>
+                </aside>
+                <section class="md:w-2/3">
+                    {{ _opdrachtgevers[0].description }}
+                </section>
+                {% else %}
+                    <aside class="md:w-1/5">
+                        <h4 class="text-2xl">
+                            {{ __('Werken bij <br> %s', 'ppmm')|format(post.meta('opdrachtgever').naam) }}
+                        </h4>
+                    </aside>
+                    <section class="md:w-2/3">
+                        {{ post.meta('opdrachtgever').about }}
+                    </section>
+                {% endif %}
+            </div>
+        </main>
+        <aside class="md:w-1/4">
+            {% set _contactpersoon = Post(post.meta('contactpersoon')) %}
+            {% if _opdrachtgevers[0] %}
+            <picture>
+                <img src="{{ Image(_opdrachtgevers[0].thumbnail).src }}" alt="{{ _opdrachtgevers[0] }}" class="ml-12" />
+            </picture>
+            {% endif %}
+            {% include 'templates/parts/vacature/block-contactpersoon.twig' %}
+        </aside>
+    </article>
+    <section class="flex container mx-auto" id="sollicitatieFormulier">
+        <div class="md:w-3/4">
+            <div class="md:w-2/3 mx-auto pb-12">
+                {% include 'templates/parts/form-sollicitatie.twig' %}
+            </div>
+        </div>
+    </section>
+    {% include 'templates/parts/block-mailchimp.twig' %}
+    {% include 'templates/parts/content-employers.twig' %}
+    <script src="{{ theme.link }}/dist/js/scrollto.js"></script>
+{% endblock %}
+

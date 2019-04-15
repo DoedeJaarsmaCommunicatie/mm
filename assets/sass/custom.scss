@@ -1,0 +1,74 @@
+.content {
+  &  ul {
+    @apply font-light;
+    & > li {
+      position: relative;
+      padding-left: 1rem;
+      &::before {
+        content: '-';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #F28811;
+      }
+    }
+  }
+}
+
+.custom-logo {
+  height: 30px;
+  width: auto;
+}
+
+.button {
+  @apply bg-secondary-500 px-4 py-2 text-white cursor-pointer rounded;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-title font-bold;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+p {
+  @apply mb-2;
+  @apply font-light;
+}
+
+.home-tease-vacature {
+  @apply border-l-12 border-secondary-500 bg-primary-300 p-8 flex flex-col;
+}
+
+.home-tease-vacature:nth-of-type(2) {
+  @apply mx-8;
+}
+
+.home-meer-vacatures {
+  @apply text-secondary-500 mx-auto;
+  transform: translateX(-50%);
+}
+
+.vacature-demands-container {
+  @apply border-l-12 bg-white border-secondary-500 py-12 px-8 flex shadow-lg;
+  margin-top: -40px;
+}
+
+.vacature-contactpersoon {
+  @apply border-l-12 bg-white border-secondary-500 py-8 px-8 shadow-lg;
+}
+
+.clip-me {
+  height: 430px;
+  width: auto;
+  object-fit: cover;
+  clip-path :polygon(100% 0, 0 0, 0 100%, 8% 90%, 100% 90%);
+}
+
+

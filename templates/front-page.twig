@@ -1,0 +1,64 @@
+{% extends 'templates/layouts/base.twig' %}
+
+{% block content %}
+    <style>
+        .header-frontpage {
+            height: 430px;
+        }
+    </style>
+    <header class="header-frontpage bg-primary-500 py-12">
+        <div class="container mx-auto md:flex h-full">
+            <div class="md:w-1/3 md:flex flex-col md:h-full">
+                <h1 class="text-white text-5xl">{{ post.meta('payoff') }}</h1>
+                <a href="{{ fn('get_post_type_archive_link', 'vacature' ) }}" class="button md:mt-auto md:mr-auto">{{  __('Bekijk vacatures', 'ppmm') }}</a>
+            </div>
+            <div class="md:w-1/2 ml-auto relative">
+                <picture class="absolute">
+                    {% set _img = Image(post.meta('foto_header')) %}
+                    <source srcset="{{ _img.src('medium') }}" media="(max-width: 413px)" />
+                    <source srcset="{{ _img.src('medium_large') }}" media="(min-width: 414px) and (max-width: 768px)" />
+                    <img src="{{ _img.src('large') }}" alt="{{ _img.alt }}" class="clip-me">
+                </picture>
+            </div>
+        </div>
+    </header>
+    <section class="bg-primary-200 py-12">
+        <div class="container mx-auto">
+            <h3 class="text-secondary-500 text-2xl my-8">{{  __('Nieuwe vacatures', 'ppmm') }}</h3>
+            <div class="flex">
+                {% for vacature in vacatures %}
+                    {% include 'templates/tease/vacature-home.twig' with { post: vacature } only %}
+                {% endfor %}
+            </div>
+            <div class="flex w-full mt-8">
+                <span class="text-secondary-500">
+                    {{ __("%d van de %d vacatures", 'ppmm')|format(vacatures|length, fn('wp_count_posts', 'vacature').publish) }}
+                </span>
+
+                <a href="{{ fn('get_post_type_archive_link', 'vacature' ) }}" class="home-meer-vacatures">
+                    {{ __('Meer vacatures', 'ppmm') }}
+                </a>
+            </div>
+        </div>
+    </section>
+    <main class="container mx-auto md:flex py-8">
+        <aside class="md:w-1/3">
+            {% set _imgContent = Image(post.meta('foto_content')) %}
+            <picture>
+                <source srcset="{{ _imgContent.src('medium') }}" media="(max-width: 413px)" />
+                <source srcset="{{ _imgContent.src('medium_large') }}" media="(min-width: 414px) and (max-width: 768px)" />
+                <img src="{{ _imgContent.src('large') }}" alt="{{ _imgContent.alt }}"  class="border-l-12 border-secondary-500 h-full object-cover">
+            </picture>
+        </aside>
+        <section class="content md:w-1/3 md:mx-8 p-8">
+            {{ post.content|wpautop }}
+        </section>
+        <aside class="md:w-1/3">
+            <article class="border-l-12 border-secondary-500 bg-primary-200 p-8 content">
+                {{ post.meta('sidebar_content') }}
+            </article>
+        </aside>
+    </main>
+    {% include 'templates/parts/block-mailchimp.twig' %}
+    {% include 'templates/parts/content-employers.twig' %}
+{% endblock %}

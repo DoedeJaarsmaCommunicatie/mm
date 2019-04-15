@@ -1,0 +1,40 @@
+<nav class="flex relative ml-auto items-center">
+    {% for item in primaryMenu.items %}
+        <section class="flex mx-4 relative"
+                {% if item.children %}
+                    data-hover-target="hover_{{ item.id }}"
+                {% endif %}
+        >
+            <a
+                    class="text-white{{ item.classes|join(' ') }}"
+                    href="{{ item.link }}"
+            >
+                {{ item.title }}
+            </a>
+            {% if item.children %}
+                <nav class="absolute hidden submenu-container shadow bg-primary-500 text-white p-4 w-content" data-hover-anchor="hover_{{ item.id }}" style="top: 100%; left:0; z-index: 9; padding-top: 2vh;">
+                    {% for child in item.children %}
+                        {% if child.children %}
+                            <div data-hover-target="hover_mini_{{ child.id }}" class="py-2 px-3 relative">
+                                <a href="{{ child.link }}" class="submenu-item{{ child.classes|join(' ') }}" >
+                                    {{ child }}
+                                </a>
+                                <nav class="d-none position-absolute w-100 babymenu-container bg-secondary" data-hover-anchor="hover_mini_{{ child.id }}">
+                                    {% for baby in child.children %}
+                                        <a href="{{ baby.link }}" class="submenu-item py-2 px-3{{ baby.classes|join(' ') }}" >
+                                            {{ baby.title }}
+                                        </a>
+                                    {% endfor %}
+                                </nav>
+                            </div>
+                        {% else %}
+                            <a href="{{ child.link }}" class="submenu-item pb-2 block{{ child.classes|join(' ') }}">
+                                {{ child }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            {% endif %}
+        </section>
+    {% endfor %}
+</nav>

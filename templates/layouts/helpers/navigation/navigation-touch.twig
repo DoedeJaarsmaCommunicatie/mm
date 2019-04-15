@@ -1,0 +1,40 @@
+<nav class="flex-col hidden w-full pb-2" id="mobile-menu">
+    {% for item in primaryMenu.items %}
+        <section class="flex flex-col text-right ml-auto mr-4 py-2">
+            <a href="{{ item.link }}" class="relative{{ item.classes|join(' ') }}" style="font-weight: 600;">
+            {{ item.title }}
+            </a>
+            {% if item.children %}
+            <aside>
+                {% for child in item.children %}
+                    <a href="{{ child.link }}" class="block relative text-grey-menu{{ child.classes|join(' ') }}" style="font-weight: 400;">
+                        {{ child.title }}
+
+                        {% if child.children %}
+                            <i class="fas fa-chevron-down text-primary absolute" style="right: 30%; top: 50%; -webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%);"></i>
+                        {% endif %}
+                    </a>
+                    {% if child.children %}
+                        <aside class="d-block">
+                            {% for baby in child.children %}
+                                <a href="{{ baby.link }}" class="block{{ baby.classes|join(' ') }}">
+                                    {{ baby.title }}
+                                </a>
+                            {% endfor %}
+                        </aside>
+                    {% endif %}
+                {% endfor %}
+            </aside>
+            {% endif %}
+        </section>
+
+    {% endfor %}
+</nav>
+<script>
+    (function ($) {
+        $('[data-action="mobileMenu"]').on('click', function (event) {
+			event.stopPropagation();
+            $(event.currentTarget.dataset.target).toggleClass('hidden flex');
+        })
+	})(jQuery)
+</script>

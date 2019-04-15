@@ -1,0 +1,8 @@
+<section class="container mx-auto flex flex-wrap">
+    {% for employer in employers|slice(0,12) %}
+        {% set _img = Image(employer.thumbnail) %}
+        <picture class="md:w-1/6 my-8 flex items-center justify-center">
+            <img src="{{ _img }}" alt="{{ employer.name }}">
+        </picture>
+    {% endfor %}
+</section>

@@ -1,0 +1,7 @@
+{% if not device.isMobile %}
+    {% include 'templates/layouts/helpers/navigation/navigation-desktop.twig' %}
+{% endif %}
+
+{% if device.isMobile %}
+    {% include 'templates/layouts/helpers/navigation/navigation-touch.twig' %}
+{% endif %}

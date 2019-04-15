@@ -1,0 +1,32 @@
+<article class="home-tease-vacature md:w-1/3">
+    {% set _regios = post.terms('regio') %}
+    {% set _branches = post.terms('branche') %}
+    {% set _functies = post.terms('functie') %}
+    {% set _opdrachtgevers = post.terms('opdrachtgever') %}
+    <header>
+        <strong>{{ _functies[0]?? '&nbsp;' }}</strong>
+        {% if _opdrachtgevers[0] %}
+            <h3 class="text-xl">{{ _opdrachtgevers[0]?? '&nbsp;' }}</h3>
+        {% else %}
+            <h3 class="text-xl">{{ post.meta('opdrachtgever').naam?? '&nbsp;' }}</h3>
+        {% endif %}
+    </header>
+    <main class="">
+        <p class="mb-8">{{ post.title }}</p>
+        <aside class="flex justify-between">
+            <span class="home-tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
+            <span class="home-tease-vacature__usp-sep">
+                {% include "templates/parts/home/separator.twig" %}
+            </span>
+            <span class="home-tease-vacature__usp">{{ post.meta('soort_dienstverband') }}</span>
+            <span class="home-tease-vacature__usp-sep">
+                {% include "templates/parts/home/separator.twig" %}
+            </span>
+            <span class="home-tease-vacature__usp">{{ post.meta('salaris') }}</span>
+        </aside>
+    </main>
+    {{ post.category('regio') }}
+    <footer class="mt-auto">
+        <a href="{{ post.link }}" class="button inline-block">{{ __('Reageer direct', 'ppmm') }}</a>
+    </footer>
+</article>

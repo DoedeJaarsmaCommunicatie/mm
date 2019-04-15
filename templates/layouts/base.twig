@@ -1,0 +1,40 @@
+{# This is the twig base file. Edit this for your needs. Or create a new layout to extend from. #}
+{% block base_head_container %}
+    {% include 'templates/layouts/helpers/base-head.twig' %}
+{% endblock %}
+{% block base_wp_title %}
+    <title>{{ wp_title }}</title>
+{% endblock %}
+{{ function('wp_head') }}
+{% block head %}
+    {# It is possible to overwrite this block and add custom code to the head #}
+{% endblock %}
+</head> {# Opened in base-head.twig #}
+
+{# Base body. Overwrite where needed. #}
+<body {{ fn('body_class', 'font-web leading-normal') }} data-template="base.twig" id="body_{{ function('get_queried_object_id') }}">
+<header {{ fn('header_class', 'bg-primary-500 flex border-b border-primary-400') }} data-template="base.twig" id="header_{{ function('get_queried_object_id') }}">
+    {% block header %}
+        <section class="container mx-auto py-4 flex">
+            {% include 'templates/layouts/helpers/base-header.twig' %}
+            {% include 'templates/layouts/helpers/base-navigation.twig' %}
+        </section>
+    {% endblock %}
+</header>
+<main  id="content_{{ fn('get_queried_object_id') }}" {{ fn('post_class', 'main') }} data-template="base.twig">
+    <div id="app">
+        {% block content %}
+            <!-- This will be overwritten by the content block in the inheriting .twig file -->
+            {{ content }}
+        {% endblock %}
+    </div>
+</main>
+<footer id="footer_{{ function('get_queried_object_id') }}" {{ fn('footer_class') }} data-template="base.twig">
+    {% block footer %}
+        {# This can also be overwritten #}
+        {% include 'templates/layouts/helpers/base-footer.twig' %}
+    {% endblock %}
+    {{ function('wp_footer')}}
+</footer>
+</body>
+</html>
