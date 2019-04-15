@@ -14,14 +14,18 @@
     <main class="">
         <p class="mb-8">{{ post.title }}</p>
         <aside class="flex justify-between">
-            <span class="home-tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
-            <span class="home-tease-vacature__usp-sep">
-                {% include "templates/parts/home/separator.twig" %}
-            </span>
-            <span class="home-tease-vacature__usp">{{ post.meta('soort_dienstverband') }}</span>
-            <span class="home-tease-vacature__usp-sep">
-                {% include "templates/parts/home/separator.twig" %}
-            </span>
+            {% if post.meta('locatie') %}
+                <span class="home-tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
+                <span class="home-tease-vacature__usp-sep">
+                    {% include "templates/parts/home/separator.twig" %}
+                </span>
+            {% endif %}
+            {% if post.meta('soort_dienstverband') %}
+                <span class="home-tease-vacature__usp">{{ post.meta('soort_dienstverband') }}</span>
+                <span class="home-tease-vacature__usp-sep">
+                    {% include "templates/parts/home/separator.twig" %}
+                </span>
+            {% endif %}
             <span class="home-tease-vacature__usp">{{ post.meta('salaris') }}</span>
         </aside>
     </main>
