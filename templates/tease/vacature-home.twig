@@ -4,16 +4,15 @@
     {% set _functies = post.terms('functie') %}
     {% set _opdrachtgevers = post.terms('opdrachtgever') %}
     <header>
-        <strong>{{ _functies[0]?? '&nbsp;' }}</strong>
         {% if _opdrachtgevers[0] %}
             <h3 class="text-xl">{{ _opdrachtgevers[0]?? '&nbsp;' }}</h3>
         {% else %}
             <h3 class="text-xl">{{ post.meta('opdrachtgever').naam?? '&nbsp;' }}</h3>
         {% endif %}
     </header>
-    <main class="">
-        <p class="mb-8">{{ post.title }}</p>
-        <aside class="flex justify-between">
+    <main class="flex flex-col" style="min-height: 8rem;">
+        <p>{{ post.title }}</p>
+        <aside class="flex justify-between my-auto">
             {% if post.meta('locatie') %}
                 <span class="home-tease-vacature__usp">{{ post.meta('locatie')|capitalize }}</span>
                 <span class="home-tease-vacature__usp-sep">

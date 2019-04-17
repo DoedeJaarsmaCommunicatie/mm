@@ -1,6 +1,6 @@
 .content {
   &  ul {
-    @apply font-light;
+    @apply font-light mb-4;
     & > li {
       position: relative;
       padding-left: 1rem;
@@ -12,6 +12,20 @@
         color: #F28811;
       }
     }
+  }
+  h2 {
+    @apply mb-4;
+  }
+  h3 {
+    @apply text-2xl mb-4 block;
+  }
+
+  p:not(:last-of-type) {
+    @apply mb-4;
+  }
+
+  strong {
+    @apply font-bold mt-4 block;
   }
 }
 
@@ -30,11 +44,11 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-title font-bold;
+  @apply font-title font-medium leading-none;
 }
 
 h2 {
-  @apply text-2xl;
+  @apply text-3xl;
 }
 
 p {
@@ -57,7 +71,7 @@ p {
 
 .vacature-demands-container {
   @apply border-l-12 bg-white border-secondary-500 py-12 px-8 flex shadow-lg;
-  margin-top: -40px;
+  margin-top: -120px;
 }
 
 .vacature-contactpersoon {
@@ -65,10 +79,46 @@ p {
 }
 
 .clip-me {
-  height: 430px;
-  width: auto;
+  height: 470px;
+  width: 800px;
   object-fit: cover;
   clip-path :polygon(100% 0, 0 0, 0 100%, 8% 90%, 100% 90%);
+  max-width: unset;
 }
 
+blockquote {
+  @apply text-secondary-500 font-title text-2xl;
+}
 
+.filtered {
+  filter: grayscale(100);
+}
+
+.childnavi {
+  &.active {
+    @apply text-secondary-500;
+  }
+}
+
+.menu-item {
+  @apply text-white;
+  &:hover {
+    @apply text-secondary-500;
+  }
+  &.current-menu-item {
+    @apply text-secondary-500;
+  }
+}
+
+.checkarea {
+  cursor: pointer;
+  & > .checkbox {
+    display: none;
+
+    &:checked {
+      & ~ .label {
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 <?php
+global $wp_query;
 
 $templates = [
 	'templates/archive-vacature.twig'
@@ -13,4 +14,6 @@ $context['regions'] = get_terms([
 	'hide_empty'    => true,
 ]);
 
+
+$context['query'] = $wp_query;
 Timber::render($templates, $context);

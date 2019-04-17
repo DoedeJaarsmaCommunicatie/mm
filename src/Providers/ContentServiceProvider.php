@@ -21,10 +21,13 @@ class ContentServiceProvider
         $context['options'] = get_fields('option');
         $context['employers'] = Timber::get_terms(
             [
-                'taxonomy' => 'opdrachtgever',
-                'hide_empty' => false,
+                'taxonomy'      => 'opdrachtgever',
+                'hide_empty'    => false,
+	            'include'       => [ 24, 12, 18, 16, 15, 8]
             ]
         );
+        $context['app'] ['request'] = $_REQUEST;
+        
         return $context;
     }
 }

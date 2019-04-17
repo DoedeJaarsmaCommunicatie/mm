@@ -9,4 +9,5 @@ mix
 
 mix
 	.js('assets/js/ScrollTo.js', 'dist/js/scrollto.js')
-	.js('assets/js/NavigationListener.js', 'dist/js/main.js');
+	.js('assets/js/NavigationListener.js', 'dist/js/main.js')
+	.js('assets/js/VacancyFilter.js', 'dist/js/filter.js');

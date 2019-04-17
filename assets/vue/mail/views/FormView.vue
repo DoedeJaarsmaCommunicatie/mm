@@ -60,7 +60,7 @@ export default class FormView extends PropsVue {
 <style scoped lang="scss">
 #mailchimp-form {
     background: #ffffff;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     padding: 2rem;
     display: flex;
     flex-direction: column;

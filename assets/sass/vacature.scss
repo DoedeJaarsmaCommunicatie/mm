@@ -47,6 +47,15 @@
   & .required {
     color: red;
   }
+
+  & #cv {
+    height: 0.1px;
+    width: 0.1px;
+    opacity: hidden;
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+  }
 }
 
 .vacature-content ul {
@@ -61,12 +70,16 @@
 }
 
 .tease-vacature {
-  @apply border-b border-primary-500 pb-4 mb-4 flex;
+  @apply border-b border-secondary-500 pb-4 mb-4 flex;
 
   & .tease-vacature-aside {
-    @apply items-end;
+    @apply items-end flex;
     & > .button {
       @apply whitespace-no-wrap block;
     }
   }
+}
+
+.home-tease-vacature__usp, .home-meer-vacatures, .tease-vacature__usp {
+  @apply font-title font-light;
 }

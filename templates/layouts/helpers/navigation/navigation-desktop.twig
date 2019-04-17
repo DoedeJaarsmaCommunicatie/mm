@@ -6,13 +6,13 @@
                 {% endif %}
         >
             <a
-                    class="text-white{{ item.classes|join(' ') }}"
+                    class="{{ item.classes|join(' ') }}"
                     href="{{ item.link }}"
             >
                 {{ item.title }}
             </a>
             {% if item.children %}
-                <nav class="absolute hidden submenu-container shadow bg-primary-500 text-white p-4 w-content" data-hover-anchor="hover_{{ item.id }}" style="top: 100%; left:0; z-index: 9; padding-top: 2vh;">
+                <nav class="absolute hidden submenu-container shadow bg-primary-500 p-4 w-content" data-hover-anchor="hover_{{ item.id }}" style="top: 100%; left:0; z-index: 9; padding-top: 2vh;">
                     {% for child in item.children %}
                         {% if child.children %}
                             <div data-hover-target="hover_mini_{{ child.id }}" class="py-2 px-3 relative">
