@@ -6,5 +6,6 @@ return [
 	    \App\Providers\OptionsServiceProvider::class,
 	    \App\Providers\ContentServiceProvider::class,
 	    \App\Providers\MenuServiceProvider::class,
+	    \App\Providers\ShortcodeServiceProvider::class,
     ]
 ];

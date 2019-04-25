@@ -1,6 +1,6 @@
 <nav class="flex-col hidden w-full pb-2" id="mobile-menu">
     {% for item in primaryMenu.items %}
-        <section class="flex flex-col text-right ml-auto mr-4 py-2">
+        <section class="flex flex-col text-right ml-auto py-2">
             <a href="{{ item.link }}" class="relative{{ item.classes|join(' ') }}" style="font-weight: 600;">
             {{ item.title }}
             </a>
@@ -30,11 +30,3 @@
 
     {% endfor %}
 </nav>
-<script>
-    (function ($) {
-        $('[data-action="mobileMenu"]').on('click', function (event) {
-			event.stopPropagation();
-            $(event.currentTarget.dataset.target).toggleClass('hidden flex');
-        })
-	})(jQuery)
-</script>

@@ -13,9 +13,9 @@
 
 {# Base body. Overwrite where needed. #}
 <body {{ fn('body_class', 'font-web leading-normal') }} data-template="base.twig" id="body_{{ function('get_queried_object_id') }}">
-<header {{ fn('header_class', 'bg-primary-500 flex border-b border-primary-400') }} data-template="base.twig" id="header_{{ function('get_queried_object_id') }}">
+<header {{ fn('header_class', 'header') }} data-template="base.twig" id="header_{{ function('get_queried_object_id') }}">
     {% block header %}
-        <section class="container mx-auto py-4 flex">
+        <section class="container mx-auto py-4 flex flex-wrap">
             {% include 'templates/layouts/helpers/base-header.twig' %}
             {% include 'templates/layouts/helpers/base-navigation.twig' %}
         </section>

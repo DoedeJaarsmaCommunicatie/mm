@@ -1,3 +1,13 @@
+.header {
+  @apply bg-primary-500 flex;
+  @media screen and (min-width: 768px) {
+    @apply border-b border-primary-400;
+  }
+  @media screen and (max-width: 414px) {
+    @apply px-8;
+  }
+}
+
 .content {
   &  ul {
     @apply font-light mb-4;
@@ -58,20 +68,38 @@ p {
 
 .home-tease-vacature {
   @apply border-l-12 border-secondary-500 bg-primary-300 p-8 flex flex-col;
-}
 
-.home-tease-vacature:nth-of-type(2) {
-  @apply mx-8;
+  &:nth-of-type(2) {
+    @media screen and (min-width: 768px) {
+      @apply mx-8;
+    }
+  }
+
+  @media screen and (max-width: 414px) {
+    @apply my-4 p-4;
+  }
 }
 
 .home-meer-vacatures {
   @apply text-secondary-500 mx-auto;
-  transform: translateX(-50%);
+  @media screen and (min-width: 768px) {
+    transform: translateX(-50%);
+  }
+
+  & > .home-tease-vacature-main {
+    min-height: 8rem;
+    @media screen and (max-width: 414px) {
+      min-height: 4rem;
+    }
+  }
 }
 
 .vacature-demands-container {
   @apply border-l-12 bg-white border-secondary-500 py-12 px-8 flex shadow-lg;
   margin-top: -120px;
+  @media screen and (max-width: 414px) {
+    margin-top: 1rem;
+  }
 }
 
 .vacature-contactpersoon {
@@ -79,11 +107,17 @@ p {
 }
 
 .clip-me {
-  height: 470px;
-  width: 800px;
+  height: 100px;
+  width: 100%;
   object-fit: cover;
-  clip-path :polygon(100% 0, 0 0, 0 100%, 8% 90%, 100% 90%);
-  max-width: unset;
+  object-position: top;
+  @media screen and (min-width:768px) {
+    height: 470px;
+    width: 800px;
+    object-fit: cover;
+    clip-path :polygon(100% 0, 0 0, 0 100%, 8% 90%, 100% 90%);
+    max-width: unset;
+  }
 }
 
 blockquote {
@@ -120,5 +154,31 @@ blockquote {
         font-weight: bold;
       }
     }
+  }
+}
+
+.employers-footer {
+  @apply mx-auto flex flex-wrap;
+  @media screen and (max-width: 414px) {
+    display: none;
+  }
+}
+
+.main-content {
+  @apply mx-auto py-8;
+  @media screen and (min-width: 768px) {
+    @apply flex;
+  }
+  @media screen and (max-width: 414px) {
+    @apply px-8;
+  }
+}
+
+.homepage-img {
+  @apply h-full object-cover;
+  @media screen and (max-width: 414px) {
+    @apply w-full;
+    height: 200px;
+    object-position: top;
   }
 }

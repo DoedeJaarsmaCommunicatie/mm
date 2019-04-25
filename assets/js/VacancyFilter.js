@@ -19,15 +19,15 @@ const VacancyFilter = () => {
 
 		for ( let i = 0; i < checkboxes.length; i++ ) {
 			checkboxes[i].addEventListener('click', (ev) => {
-				let param = params.getAll('regio[]');
+				let param = params.getAll(ev.target.dataset.param + '[]');
 				if (ev.target.checked) {
-					params.append('regio[]', ev.target.dataset.regio);
+					params.append(ev.target.dataset.param + '[]', ev.target.dataset[ev.target.dataset.param]);
 				} else {
-					params.delete('regio[]');
-					param = param.filter(p => p !== ev.target.dataset.regio);
+					params.delete(ev.target.dataset.param + '[]');
+					param = param.filter(p => p !== ev.target.dataset[ev.target.dataset.param]);
 
 					for (let p of param) {
-						params.append('regio[]', p)
+						params.append(ev.target.dataset.param + '[]', p)
 					}
 				}
 

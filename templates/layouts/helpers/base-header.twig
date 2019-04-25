@@ -1,3 +1,14 @@
 <div class="site-branding" data-template="helpers.base-header.twig">
     {{ fn('the_custom_logo') }}
 </div><!-- .site-branding -->
+
+{% if device.isMobile %}
+<button class="ml-auto" onclick="toggleMenu()">
+    <i class="fas fa-bars text-2xl text-secondary-500"></i>
+</button>
+    <script>
+        function toggleMenu() {
+        	document.getElementById('mobile-menu').classList.toggle('hidden')
+        }
+    </script>
+{% endif %}

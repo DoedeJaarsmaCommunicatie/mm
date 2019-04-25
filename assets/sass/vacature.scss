@@ -78,6 +78,10 @@
       @apply whitespace-no-wrap block;
     }
   }
+
+  @media screen and (max-width: 414px) {
+    @apply block;
+  }
 }
 
 .home-tease-vacature__usp, .home-meer-vacatures, .tease-vacature__usp {

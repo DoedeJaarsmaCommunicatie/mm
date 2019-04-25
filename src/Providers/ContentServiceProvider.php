@@ -27,6 +27,10 @@ class ContentServiceProvider
             ]
         );
         $context['app'] ['request'] = $_REQUEST;
+        $context['makelaarsmensen'] = new \Timber\Site(2);
+        switch_to_blog($context['makelaarsmensen']->blog_id);
+        $context['makelaarslogo'] = new \Timber\Image(wp_get_attachment_url(get_theme_mod('custom_logo')));
+        switch_to_blog(1);
         
         return $context;
     }
